@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -36,16 +38,23 @@ public class User implements Serializable {
 	@GenericGenerator(name="native", strategy="native")
 	private Long id;
 	@Column
+	@NotBlank
+	@Size(min=5, max=8, message="Characters must be more than 5 and less than 8")
 	private String firstName;
 	@Column
+	@NotBlank
 	private String lastName;
 	@Column
+	@NotBlank
 	private String email;
 	@Column
+	@NotBlank
 	private String username;
 	@Column
+	@NotBlank
 	private String password;
 	@Column
+	@NotBlank
 	private String confirmPassword;
 
 	@ManyToMany(fetch = FetchType.LAZY)

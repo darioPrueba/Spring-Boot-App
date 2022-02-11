@@ -1,5 +1,7 @@
 package com.dariorucker.service;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Service;
 
 import com.dariorucker.entity.User;
@@ -8,5 +10,7 @@ import com.dariorucker.entity.User;
 public interface UserService {
 
 	public Iterable<User> getAllUsers();
+
+	public User createUser(User user) throws Exception;
 	
 }
