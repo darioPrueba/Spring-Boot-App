@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -28,6 +29,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User implements Serializable {
 
+	public User(Long id) {
+		super();
+		this.id = id;
+	}
+	
 	/**
 	 * 
 	 */
@@ -53,10 +59,11 @@ public class User implements Serializable {
 	@Column
 	@NotBlank
 	private String password;
-	@Column
-	@NotBlank
+ 
+	@Transient
 	private String confirmPassword;
 
+	@Size(min=1)
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles",
 			joinColumns=@JoinColumn(name="user_id"),

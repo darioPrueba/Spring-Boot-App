@@ -24,8 +24,12 @@ public class ChangePasswordForm {
 	@NotBlank(message="Confirm Password cant be blank")
 	private String confirmPassword;
 	
-	public ChangePasswordForm() {}
-	public ChangePasswordForm(Long id) {this.id = id;}
+	public ChangePasswordForm() {
+		
+	}
+	public ChangePasswordForm(Long id) {
+		this.id = id;
+		}
 
 
 

@@ -31,12 +31,12 @@ public class UserController {
 	@Autowired
 	RoleRepository roleRepository;
 	
-	@GetMapping("/")
+	@GetMapping({"/", "/login"})
 	public String index() {
 		return "index";
 	}
 	
-	@GetMapping("/userform")
+	@GetMapping("/userForm")
 	public String userForm(Model model){
 
 		model.addAttribute("userForm", new User());
@@ -46,7 +46,7 @@ public class UserController {
 		return "user-form/user-view";
 	}
 	
-	@PostMapping("/userform")
+	@PostMapping("/userForm")
 	public String createUser(@Valid @ModelAttribute("userForm") User user, BindingResult result, ModelMap model) {
 	
 		if(result.hasErrors()) {
